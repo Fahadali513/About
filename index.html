@@ -139,16 +139,6 @@
             animation: shine 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         }
 
-        .avatar-box::after {
-            content: '';
-            position: absolute;
-            inset: -4px;
-            border-radius: 30px;
-            border: 1px solid var(--accent);
-            opacity: 0.4;
-            animation: pulseRing 3s infinite;
-        }
-
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -163,12 +153,6 @@
         @keyframes shine {
             0% { transform: translateY(-120%) rotate(45deg); }
             100% { transform: translateY(120%) rotate(45deg); }
-        }
-
-        @keyframes pulseRing {
-            0% { transform: scale(1); opacity: 0.6; }
-            50% { transform: scale(1.06); opacity: 0; }
-            100% { transform: scale(1); opacity: 0; }
         }
 
         .profile-info {
@@ -218,11 +202,6 @@
             border-radius: 8px;
             color: var(--text-muted);
             letter-spacing: 0.3px;
-        }
-
-        .skill-pill:hover {
-            border-color: var(--accent);
-            color: var(--accent);
         }
 
         .owner-credit {
@@ -368,19 +347,6 @@
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .project-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 22px;
-            background: var(--gradient-accent);
-            opacity: 0;
-            z-index: 1;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-            mix-blend-mode: overlay;
-        }
-
         .project-card:hover {
             transform: translateY(-6px);
             border-color: var(--accent);
@@ -413,8 +379,6 @@
             flex-direction: column;
             justify-content: space-between;
             gap: 16px;
-            position: relative;
-            z-index: 2;
         }
 
         .card-meta {
@@ -466,7 +430,7 @@
             transform: translateX(4px);
         }
 
-        /* Intelligent Interactive AI Chatbot Widget Styles */
+        /* Intelligent Interactive AI Chatbot Widget */
         .chat-widget {
             position: fixed;
             bottom: 24px;
@@ -518,7 +482,7 @@
             bottom: 76px;
             right: 0;
             width: 380px;
-            height: 520px;
+            height: 540px;
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 22px;
@@ -603,7 +567,7 @@
         }
 
         .message {
-            max-width: 85%;
+            max-width: 88%;
             padding: 11px 15px;
             border-radius: 14px;
             font-size: 0.85rem;
@@ -625,7 +589,6 @@
             border-bottom-right-radius: 4px;
         }
 
-        /* Quick Suggestions Chips */
         .quick-suggestions {
             display: flex;
             gap: 6px;
@@ -659,7 +622,6 @@
             background: var(--accent-glow);
         }
 
-        /* Typing indicator animation */
         .typing-indicator {
             display: flex;
             gap: 4px;
@@ -737,7 +699,6 @@
             fill: currentColor;
         }
 
-        /* Footer */
         footer {
             max-width: 1080px;
             width: 100%;
@@ -843,7 +804,6 @@
                 <div class="owner-credit">Developed & Owned by <strong>Fahad Ali</strong></div>
             </div>
             
-            <!-- Contact options -->
             <div class="contact-links">
                 <a href="https://wa.me/923306508733" target="_blank" title="Chat on WhatsApp">
                     💬 Chat on WhatsApp
@@ -870,7 +830,6 @@
             </div>
 
             <div class="projects-stack">
-                <!-- Project 1 -->
                 <a href="https://fahadali513.github.io/Portfolio/" target="_blank" class="project-card">
                     <div class="card-image-wrapper">
                         <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=600&auto=format&fit=crop" alt="Portfolio Archive" class="card-image">
@@ -888,7 +847,6 @@
                     </div>
                 </a>
 
-                <!-- Project 2 -->
                 <a href="https://fahadali513.github.io/Clothing-Store/" target="_blank" class="project-card">
                     <div class="card-image-wrapper">
                         <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=600&auto=format&fit=crop" alt="Clothing Store" class="card-image">
@@ -921,22 +879,22 @@
                     <div class="chat-avatar">AI</div>
                     <div class="chat-title">
                         <h4>FA Studio Assistant</h4>
-                        <span><div class="status-dot" style="width: 5px; height: 5px;"></div> Intelligent & Online</span>
+                        <span><div class="status-dot" style="width: 5px; height: 5px;"></div> Highly Intelligent & Online</span>
                     </div>
                 </div>
                 <button class="chat-close-btn" onclick="toggleChat()">&times;</button>
             </div>
             <div class="chat-messages" id="chatMessages">
-                <div class="message bot">Hello! 👋 I'm FA Tech Studio's intelligent virtual assistant. Ask me anything about Fahad's projects, technical skills, or how to collaborate!</div>
+                <div class="message bot">Hello! 👋 I'm FA Tech Studio's multi-category assistant. Ask me anything about pricing, web apps, WordPress conversions, tech stack, or hiring Fahad!</div>
             </div>
-            <!-- Quick Suggestion Chips for user-friendliness -->
             <div class="quick-suggestions" id="quickSuggestions">
-                <button class="suggestion-chip" onclick="sendSuggestion('Tell me about your projects')">📦 Featured Projects</button>
-                <button class="suggestion-chip" onclick="sendSuggestion('What are Fahad’s skills?')">💡 Tech Stack</button>
-                <button class="suggestion-chip" onclick="sendSuggestion('How can I hire or contact Fahad?')">💬 Contact Info</button>
+                <button class="suggestion-chip" onclick="sendSuggestion('How much for an e-commerce website?')">💰 Pricing</button>
+                <button class="suggestion-chip" onclick="sendSuggestion('Can you convert files to WordPress?')">🛠️ WordPress</button>
+                <button class="suggestion-chip" onclick="sendSuggestion('What tech stack do you use?')">💻 Tech Stack</button>
+                <button class="suggestion-chip" onclick="sendSuggestion('How can I contact Fahad?')">💬 Contact</button>
             </div>
             <div class="chat-input-area">
-                <input type="text" class="chat-input" id="chatInput" placeholder="Ask a question..." onkeypress="handleKeyPress(event)">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Ask any question across categories..." onkeypress="handleKeyPress(event)">
                 <button class="chat-send-btn" onclick="sendMessage()">
                     <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
                 </button>
@@ -1025,14 +983,14 @@
             input.value = '';
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
-            // Show intelligent typing indicator
+            // Show typing indicator
             const typingIndicator = document.createElement('div');
             typingIndicator.className = 'typing-indicator';
             typingIndicator.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
             messagesContainer.appendChild(typingIndicator);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
-            // Simulate intelligent NLP response generation after a realistic thinking delay
+            // Advanced Categorized Intent Engine
             setTimeout(() => {
                 messagesContainer.removeChild(typingIndicator);
                 
@@ -1040,21 +998,47 @@
                 botMsg.className = 'message bot';
                 
                 const lowerText = text.toLowerCase();
-                if (lowerText.includes('project') || lowerText.includes('work') || lowerText.includes('portfolio')) {
-                    botMsg.innerHTML = "FA Tech Studio features top-tier web apps: <br>• <strong>Portfolio Archive</strong> (Exhibition showcase)<br>• <strong>Clothing Store</strong> (Minimalist E-Commerce)<br>Feel free to click them above to explore live demos!";
-                } else if (lowerText.includes('contact') || lowerText.includes('hire') || lowerText.includes('whatsapp') || lowerText.includes('email')) {
-                    botMsg.innerHTML = "Fahad Ali is currently available for work! 🚀<br>• WhatsApp: <a href='https://wa.me/923306508733' target='_blank' style='color:var(--accent)'>+92 330 6508733</a><br>• Email: <a href='mailto:fahadali66927777@gmail.com' style='color:var(--accent)'>fahadali66927777@gmail.com</a>";
-                } else if (lowerText.includes('skill') || lowerText.includes('stack') || lowerText.includes('frontend') || lowerText.includes('ui')) {
-                    botMsg.textContent = "Fahad is specialized as a Full-Stack & UI/UX Architect, focusing on cutting-edge Frontend development, user-centric interfaces, and peak performance optimization.";
-                } else if (lowerText.includes('hello') || lowerText.includes('hi') || lowerText.includes('hey')) {
-                    botMsg.textContent = "Hello there! How can I assist you with FA Tech Studio's services or portfolio today?";
+
+                // Multi-category intent rules
+                const isPricing = /\b(cost|price|charge|fee|budget|rate|pricing|how much|worth|pay)\b/i.test(lowerText);
+                const isEcom = /\b(ecommerce|e-commerce|store|shop|selling|cart|products|checkout)\b/i.test(lowerText);
+                const isWordpress = /\b(wordpress|wp|admin|panel|theme|convert|cms|dashboard)\b/i.test(lowerText);
+                const isContact = /\b(contac|reach|touch|connect|phone|number|call|whatsapp|email|mail|hire|address|telegram)\b/i.test(lowerText);
+                const isProject = /\b(project|work|portfolio|app|website|demo|site|showcase)\b/i.test(lowerText);
+                const isSkill = /\b(skill|stack|frontend|backend|ui|ux|tech|code|develop|languages|html|css|js|javascript)\b/i.test(lowerText);
+                const isWhyChoose = /\b(why|choose|best|better|different|competitor|special|advantage)\b/i.test(lowerText);
+                const isGreeting = /\b(hi|hello|hey|greetings|sup|hola|good morning|good evening)\b/i.test(lowerText);
+                const isTimeline = /\b(time|timeline|long|duration|deadline|speed|fast|turnaround)\b/i.test(lowerText);
+                const isProcess = /\b(process|steps|workflow|how do you work|stages)\b/i.test(lowerText);
+
+                // Smart categorized responses
+                if (isPricing && isEcom) {
+                    botMsg.innerHTML = "For a custom e-commerce web application, pricing scales according to product options, secure payment gateways, and admin dashboard complexity. You can chat directly with Fahad on <a href='https://wa.me/923306508733' target='_blank' style='color:var(--accent)'>WhatsApp</a> to configure your exact project scope and receive an accurate quote!";
+                } else if (isPricing) {
+                    botMsg.innerHTML = "Fahad's pricing is customized per project based on your feature requirements, design depth, and delivery goals. Reach out via <a href='https://wa.me/923306508733' target='_blank' style='color:var(--accent)'>WhatsApp</a> or <a href='mailto:fahadali66927777@gmail.com' style='color:var(--accent)'>Email</a> for a transparent, no-obligation project estimate.";
+                } else if (isWordpress) {
+                    botMsg.innerHTML = "Yes! Fahad specializes in turning static website assets into fully functional <strong>WordPress themes</strong> equipped with a secure admin dashboard, dynamic content controls, and completely working pages.";
+                } else if (isTimeline) {
+                    botMsg.innerHTML = "Project turnaround times vary by scope—simple landing pages can take a few days, while full e-commerce platforms or custom WordPress themes usually take 1 to 3 weeks. Contact Fahad directly to discuss your specific deadline!";
+                } else if (isProcess) {
+                    botMsg.innerHTML = "Fahad's workflow consists of: <strong>1. Requirement Analysis</strong> &rarr; <strong>2. UI/UX Wireframing</strong> &rarr; <strong>3. Clean Code Development</strong> &rarr; <strong>4. Rigorous Testing & Launch</strong>.";
+                } else if (isWhyChoose) {
+                    botMsg.innerHTML = "Fahad merges high-end modern UI/UX aesthetics with bulletproof frontend and backend performance, focusing entirely on your unique business goals rather than lazy cookie-cutter templates.";
+                } else if (isContact) {
+                    botMsg.innerHTML = "You can connect with Fahad instantly through these direct channels:<br>• <strong>WhatsApp:</strong> <a href='https://wa.me/923306508733' target='_blank' style='color:var(--accent)'>+92 330 6508733</a><br>• <strong>Email:</strong> <a href='mailto:fahadali66927777@gmail.com' style='color:var(--accent)'>fahadali66927777@gmail.com</a>";
+                } else if (isProject) {
+                    botMsg.innerHTML = "FA Tech Studio showcases key applications:<br>1. <strong>Portfolio Archive</strong> (Professional Showcase)<br>2. <strong>Clothing Store</strong> (Minimalist E-Commerce)<br>Click either project card on the main screen to test their live previews!";
+                } else if (isSkill) {
+                    botMsg.innerHTML = "Fahad’s core stack features Full-Stack Web Development, Modern Frontend Engineering, responsive UI/UX architecture, and specialized WordPress custom theme integrations.";
+                } else if (isGreeting) {
+                    botMsg.textContent = "Hello there! How can I assist you with Fahad's portfolio, custom development services, or pricing today?";
                 } else {
-                    botMsg.textContent = "That's a great question! For specific project inquiries or custom requests, you can contact Fahad directly via WhatsApp or email using the sidebar links.";
+                    botMsg.innerHTML = "That's a great question! You can ask me about Fahad's <strong>pricing & packages</strong>, <strong>e-commerce solutions</strong>, <strong>WordPress conversions</strong>, <strong>project timelines</strong>, or direct contact methods to talk details.";
                 }
 
                 messagesContainer.appendChild(botMsg);
                 messagesContainer.scrollTop = messagesContainer.scrollHeight;
-            }, 900);
+            }, 800);
         }
     </script>
 </body>
