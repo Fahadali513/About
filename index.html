@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -314,18 +314,6 @@
             box-shadow: 0 16px 45px var(--accent-glow);
         }
 
-        /* Coming Soon Style Modifications */
-        .project-card.coming-soon {
-            opacity: 0.85;
-            cursor: default;
-        }
-
-        .project-card.coming-soon:hover {
-            transform: none;
-            border-color: var(--border);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03);
-        }
-
         .card-image-wrapper {
             position: relative;
             overflow: hidden;
@@ -342,41 +330,8 @@
             transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .project-card:not(.coming-soon):hover .card-image {
+        .project-card:hover .card-image {
             transform: scale(1.06);
-        }
-
-        /* Coming Soon Badge Overlay */
-        .coming-soon-badge {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            background: rgba(13, 16, 23, 0.85);
-            border: 1px solid var(--border);
-            color: var(--accent);
-            font-size: 0.68rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            padding: 6px 12px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .coming-soon-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--accent);
-            border-radius: 50%;
-            animation: pulseDot 1.5s infinite;
-        }
-
-        @keyframes pulseDot {
-            0%, 100% { opacity: 0.3; transform: scale(0.9); }
-            50% { opacity: 1; transform: scale(1.2); }
         }
 
         .card-body {
@@ -428,14 +383,8 @@
             transition: transform 0.2s ease;
         }
 
-        .project-card:not(.coming-soon):hover .action-arrow {
+        .project-card:hover .action-arrow {
             transform: translateX(4px);
-        }
-
-        .coming-soon-text {
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            font-style: italic;
         }
 
         /* --- ChatGPT Style Futuristic Bot Widget --- */
@@ -446,7 +395,6 @@
             z-index: 999;
         }
 
-        /* Futuristic Holographic Animated Bot Icon */
         .ai-toggle-btn {
             background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
             border: 2px solid rgba(59, 130, 246, 0.6);
@@ -486,7 +434,6 @@
             50% { transform: scale(1.1); opacity: 1; filter: drop-shadow(0 0 12px rgba(139, 92, 246, 1)); }
         }
 
-        /* ChatGPT Window Layout */
         .ai-chat-window {
             position: absolute;
             bottom: 84px;
@@ -563,7 +510,6 @@
             font-size: 0.88rem;
         }
 
-        /* ChatGPT Style Message Bubbles */
         .ai-message-row {
             display: flex;
             gap: 12px;
@@ -617,7 +563,6 @@
             border-bottom-left-radius: 4px;
         }
 
-        /* ChatGPT Style Textarea Footer Input */
         .ai-chat-footer {
             padding: 14px 16px;
             border-top: 1px solid var(--border);
@@ -743,36 +688,52 @@
             fill: currentColor;
         }
 
+        /* --- Enhanced Mobile View Optimizations --- */
         @media (max-width: 900px) {
+            body {
+                padding: 20px 14px;
+            }
             .layout-wrapper {
                 grid-template-columns: 1fr;
+                gap: 24px;
             }
             .sidebar {
                 position: static;
+                padding: 24px 20px;
+                border-radius: 20px;
             }
             .project-card {
                 grid-template-columns: 1fr;
             }
             .card-image-wrapper {
-                height: 200px;
+                height: 180px;
+                min-height: 180px;
                 border-right: none;
                 border-bottom: 1px solid var(--border);
+            }
+            .card-body {
+                padding: 20px;
             }
             .footer-content {
                 flex-direction: column;
                 gap: 18px;
                 text-align: center;
             }
+            .ai-assistant-widget {
+                bottom: 16px;
+                right: 16px;
+            }
             .ai-chat-window {
-                width: calc(100vw - 32px);
-                right: -16px;
+                width: calc(100vw - 28px);
+                right: -8px;
+                bottom: 76px;
+                height: 480px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- SVG Gradients Definitions for Futuristic Icon -->
     <svg width="0" height="0">
         <defs>
             <linearGradient id="futuristicGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -815,7 +776,7 @@
 
             <div class="sidebar-divider"></div>
             <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeBtn">
-                <span id="themeIcon">☀️</span> <span id="themeText">Light Mode</span>
+                <span id="themeIcon">🌙</span> <span id="themeText">Dark Mode</span>
             </button>
         </aside>
 
@@ -860,34 +821,29 @@
                     </div>
                 </a>
 
-                <!-- Travel Agency Project set to Coming Soon -->
-                <div class="project-card coming-soon">
+                <a href="https://fahadali513.github.io/Travel-agency/" target="_blank" class="project-card">
                     <div class="card-image-wrapper">
                         <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=600&auto=format&fit=crop" alt="Travel Agency" class="card-image">
-                        <div class="coming-soon-badge">
-                            <div class="coming-soon-dot"></div> Coming Soon
-                        </div>
                     </div>
                     <div class="card-body">
                         <div class="card-meta">
                             <span class="card-tag">Tourism Platform</span>
                             <h3 class="card-title">Travel Agency</h3>
-                            <p class="card-desc">An upcoming immersive booking and destination discovery portal designed for modern travelers seeking seamless adventures.</p>
+                            <p class="card-desc">An immersive booking and destination discovery portal designed for modern travelers seeking seamless adventures.</p>
                         </div>
                         <div class="card-action">
-                            <span class="coming-soon-text">Under Development by Fahad Ali</span>
-                            <span>Stay Tuned</span>
+                            <span>View Live Demo</span>
+                            <span class="action-arrow">Explore &rarr;</span>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         </main>
     </div>
 
-    <!-- ChatGPT-Style AI Chatbot Widget with Futuristic Icon -->
+    <!-- AI Chatbot Widget -->
     <div class="ai-assistant-widget">
         <button class="ai-toggle-btn" onclick="toggleAIChat()" title="Open AI Assistant">
-            <!-- Futuristic Holographic Core SVG Icon -->
             <svg viewBox="0 0 24 24">
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="url(#futuristicGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
                 <circle cx="12" cy="12" r="3" fill="url(#futuristicGrad)"/>
@@ -906,7 +862,7 @@
             <div class="ai-chat-body" id="aiChatBody">
                 <div class="ai-message-row bot">
                     <div class="msg-avatar">FA</div>
-                    <div class="msg-bubble">Hello! I am FA Tech Studio's AI assistant. Ask me anything about Fahad Ali, his background, his projects (Portfolio Archive, Clothing Store, and the upcoming Travel Agency), or how to contact him!</div>
+                    <div class="msg-bubble">Hello! I am FA Tech Studio's AI assistant. Ask me anything about Fahad Ali, his background, his projects (Portfolio Archive, Clothing Store, and Travel Agency), or how to contact him!</div>
                 </div>
             </div>
 
@@ -974,7 +930,7 @@
         let chatHistory = [
             { 
                 role: "system", 
-                content: "You are a professional and multilingual AI assistant for FA Tech Studio, owned by Fahad Ali. You have full detailed knowledge about Fahad Ali, his Full-Stack & UI/UX engineering background, and his projects including the Portfolio Archive, Clothing Store, and the upcoming Travel Agency (currently Coming Soon)." 
+                content: "You are a professional and multilingual AI assistant for FA Tech Studio, owned by Fahad Ali. You have full detailed knowledge about Fahad Ali, his Full-Stack & UI/UX engineering background, and his projects including the Portfolio Archive, Clothing Store, and Travel Agency." 
             }
         ];
 
@@ -984,7 +940,6 @@
             const userText = input.value.trim();
             if (!userText) return;
 
-            // 1. Append User Message Row
             const userRow = document.createElement('div');
             userRow.className = 'ai-message-row user';
             userRow.innerHTML = `
@@ -999,7 +954,6 @@
 
             chatHistory.push({ role: "user", content: userText });
 
-            // 2. Append Loading Indicator
             const loadingRow = document.createElement('div');
             loadingRow.className = 'ai-message-row bot';
             loadingRow.id = 'loadingRow';
@@ -1053,7 +1007,6 @@
                 body.scrollTop = body.scrollHeight;
 
             } catch (error) {
-                // Advanced Multilingual Smart Intelligent Fallback with Full Customer Details
                 setTimeout(() => {
                     const loader = document.getElementById('loadingRow');
                     if(loader) loader.remove();
@@ -1071,13 +1024,13 @@
                     } else if (lower.includes('price') || lower.includes('cost') || lower.includes('charge') || lower.includes('rate') || lower.includes('kitna')) {
                         reply = "Project pricing varies based on custom requirements and scope. Please message Fahad directly on WhatsApp (+923306508733) to get an exact quote for your custom website or app!";
                     } else if (lower.includes('travel') || lower.includes('agency') || lower.includes('tour') || lower.includes('trip')) {
-                        reply = "Fahad's Travel Agency project is currently under development and marked as 'Coming Soon'! It will be an immersive booking and destination discovery portal designed for modern travelers.";
+                        reply = "Fahad developed a magnificent Travel Agency project! It is an immersive booking and destination discovery portal designed for modern travelers seeking seamless adventures. You can explore it in the featured projects section.";
                     } else if (lower.includes('fashion') || lower.includes('clothing') || lower.includes('store') || lower.includes('shop')) {
                         reply = "Fahad built the Clothing Store project, which is a modern minimalist apparel storefront optimized for smooth navigation, clean structure, and high user conversion.";
                     } else if (lower.includes('archive') || lower.includes('portfolio') || lower.includes('showcase')) {
                         reply = "The Portfolio Archive project is an extensive aesthetic collection detailing professional web development projects and engineering standards built by Fahad.";
                     } else if (lower.includes('project') || lower.includes('work') || lower.includes('kaam')) {
-                        reply = "Fahad has developed multiple stellar projects: 1) Portfolio Archive, 2) Clothing Store, and 3) Travel Agency (Coming Soon). You can check out the live ones right from the portfolio page!";
+                        reply = "Fahad has developed multiple stellar projects: 1) Portfolio Archive, 2) Clothing Store, and 3) Travel Agency. You can check them out live right from the portfolio page!";
                     } else if (lower.includes('hello') || lower.includes('hi') || lower.includes('salam') || lower.includes('hey')) {
                         reply = "Hello! How can I assist you with Fahad Ali's web development services and projects today? (وعلیکم السلام! آپ کیسے ہیں؟ میں آپ کی کیا مدد کر سکتا ہوں؟)";
                     }
