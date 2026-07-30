@@ -314,6 +314,18 @@
             box-shadow: 0 16px 45px var(--accent-glow);
         }
 
+        /* Coming Soon Style Modifications */
+        .project-card.coming-soon {
+            opacity: 0.85;
+            cursor: default;
+        }
+
+        .project-card.coming-soon:hover {
+            transform: none;
+            border-color: var(--border);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03);
+        }
+
         .card-image-wrapper {
             position: relative;
             overflow: hidden;
@@ -330,8 +342,41 @@
             transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .project-card:hover .card-image {
+        .project-card:not(.coming-soon):hover .card-image {
             transform: scale(1.06);
+        }
+
+        /* Coming Soon Badge Overlay */
+        .coming-soon-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(13, 16, 23, 0.85);
+            border: 1px solid var(--border);
+            color: var(--accent);
+            font-size: 0.68rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .coming-soon-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulseDot 1.5s infinite;
+        }
+
+        @keyframes pulseDot {
+            0%, 100% { opacity: 0.3; transform: scale(0.9); }
+            50% { opacity: 1; transform: scale(1.2); }
         }
 
         .card-body {
@@ -383,8 +428,14 @@
             transition: transform 0.2s ease;
         }
 
-        .project-card:hover .action-arrow {
+        .project-card:not(.coming-soon):hover .action-arrow {
             transform: translateX(4px);
+        }
+
+        .coming-soon-text {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-style: italic;
         }
 
         /* --- ChatGPT Style Futuristic Bot Widget --- */
@@ -808,6 +859,27 @@
                         </div>
                     </div>
                 </a>
+
+                <!-- Travel Agency Project set to Coming Soon -->
+                <div class="project-card coming-soon">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=600&auto=format&fit=crop" alt="Travel Agency" class="card-image">
+                        <div class="coming-soon-badge">
+                            <div class="coming-soon-dot"></div> Coming Soon
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="card-tag">Tourism Platform</span>
+                            <h3 class="card-title">Travel Agency</h3>
+                            <p class="card-desc">An upcoming immersive booking and destination discovery portal designed for modern travelers seeking seamless adventures.</p>
+                        </div>
+                        <div class="card-action">
+                            <span class="coming-soon-text">Under Development by Fahad Ali</span>
+                            <span>Stay Tuned</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
     </div>
@@ -834,7 +906,7 @@
             <div class="ai-chat-body" id="aiChatBody">
                 <div class="ai-message-row bot">
                     <div class="msg-avatar">FA</div>
-                    <div class="msg-bubble">Hello! I am FA Tech Studio's AI assistant. Ask me anything in any language about Fahad Ali's web development services, projects, or rates!</div>
+                    <div class="msg-bubble">Hello! I am FA Tech Studio's AI assistant. Ask me anything about Fahad Ali, his background, his projects (Portfolio Archive, Clothing Store, and the upcoming Travel Agency), or how to contact him!</div>
                 </div>
             </div>
 
@@ -902,7 +974,7 @@
         let chatHistory = [
             { 
                 role: "system", 
-                content: "You are a professional and multilingual AI assistant for FA Tech Studio, owned by Fahad Ali." 
+                content: "You are a professional and multilingual AI assistant for FA Tech Studio, owned by Fahad Ali. You have full detailed knowledge about Fahad Ali, his Full-Stack & UI/UX engineering background, and his projects including the Portfolio Archive, Clothing Store, and the upcoming Travel Agency (currently Coming Soon)." 
             }
         ];
 
@@ -981,7 +1053,7 @@
                 body.scrollTop = body.scrollHeight;
 
             } catch (error) {
-                // Advanced Multilingual Smart Intelligent Fallback
+                // Advanced Multilingual Smart Intelligent Fallback with Full Customer Details
                 setTimeout(() => {
                     const loader = document.getElementById('loadingRow');
                     if(loader) loader.remove();
@@ -990,18 +1062,24 @@
                     botRow.className = 'ai-message-row bot';
                     
                     const lower = userText.toLowerCase();
-                    let reply = "Thanks for reaching out to FA Tech Studio! Fahad Ali builds custom web apps, e-commerce stores, and high-performance frontends. You can reach him directly via WhatsApp at +923306508733 or email at fahadali66927777@gmail.com.";
+                    let reply = "Thanks for reaching out to FA Tech Studio! Fahad Ali is a Full-Stack & UI/UX Architect who builds custom web apps, e-commerce stores, and high-performance frontends. You can reach him directly via WhatsApp at +923306508733 or email at fahadali66927777@gmail.com.";
                     
                     if (lower.includes('fahad') || lower.includes('kon') || lower.includes('kaun') || lower.includes('who is') || lower.includes('bary ma') || lower.includes('about')) {
-                        reply = "FA Tech Studio is owned and operated by Fahad Ali, a skilled Full-Stack and UI/UX Architect who builds modern web solutions.";
+                        reply = "FA Tech Studio is owned and operated by Fahad Ali, a skilled Full-Stack and UI/UX Architect specializing in modern web solutions, frontend performance, and immersive user experiences.";
                     } else if (lower.includes('contact') || lower.includes('whatsapp') || lower.includes('number') || lower.includes('rabta') || lower.includes('email')) {
                         reply = "You can contact Fahad Ali directly on WhatsApp at +923306508733 or email fahadali66927777@gmail.com.";
                     } else if (lower.includes('price') || lower.includes('cost') || lower.includes('charge') || lower.includes('rate') || lower.includes('kitna')) {
-                        reply = "Project pricing varies based on custom requirements. Please message Fahad directly on WhatsApp (+923306508733) for an exact quote!";
-                    } else if (lower.includes('project') || lower.includes('portfolio') || lower.includes('work') || lower.includes('kaam')) {
-                        reply = "Fahad has developed amazing projects like the Portfolio Archive and Clothing Store showcased above.";
-                    } else if (lower.includes('hello') || lower.includes('hi') || lower.includes('salam') || lower.includes('hey') || lower.includes('salam')) {
-                        reply = "Hello! How can I assist you with Fahad Ali's web development services today? (وعلیکم السلام! آپ کیسے ہیں؟ میں آپ کی کیا مدد کر سکتا ہوں؟)";
+                        reply = "Project pricing varies based on custom requirements and scope. Please message Fahad directly on WhatsApp (+923306508733) to get an exact quote for your custom website or app!";
+                    } else if (lower.includes('travel') || lower.includes('agency') || lower.includes('tour') || lower.includes('trip')) {
+                        reply = "Fahad's Travel Agency project is currently under development and marked as 'Coming Soon'! It will be an immersive booking and destination discovery portal designed for modern travelers.";
+                    } else if (lower.includes('fashion') || lower.includes('clothing') || lower.includes('store') || lower.includes('shop')) {
+                        reply = "Fahad built the Clothing Store project, which is a modern minimalist apparel storefront optimized for smooth navigation, clean structure, and high user conversion.";
+                    } else if (lower.includes('archive') || lower.includes('portfolio') || lower.includes('showcase')) {
+                        reply = "The Portfolio Archive project is an extensive aesthetic collection detailing professional web development projects and engineering standards built by Fahad.";
+                    } else if (lower.includes('project') || lower.includes('work') || lower.includes('kaam')) {
+                        reply = "Fahad has developed multiple stellar projects: 1) Portfolio Archive, 2) Clothing Store, and 3) Travel Agency (Coming Soon). You can check out the live ones right from the portfolio page!";
+                    } else if (lower.includes('hello') || lower.includes('hi') || lower.includes('salam') || lower.includes('hey')) {
+                        reply = "Hello! How can I assist you with Fahad Ali's web development services and projects today? (وعلیکم السلام! آپ کیسے ہیں؟ میں آپ کی کیا مدد کر سکتا ہوں؟)";
                     }
 
                     botRow.innerHTML = `
