@@ -2,7 +2,7 @@
 <html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>FA Tech Studio | Modern Web Solutions & Creative Engineering</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -47,6 +47,12 @@
             transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
         }
 
+        html, body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
         body {
             background-color: var(--bg);
             color: var(--text-main);
@@ -55,9 +61,8 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 48px 24px;
+            padding: 48px 16px;
             position: relative;
-            overflow-x: hidden;
             background-image: 
                 linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
                 linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
@@ -93,7 +98,7 @@
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 28px;
-            padding: 36px 28px;
+            padding: 36px 24px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -103,6 +108,7 @@
             top: 48px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(20px);
+            width: 100%;
         }
 
         .avatar-box {
@@ -145,6 +151,7 @@
         .profile-info h1 {
             font-size: 1.4rem;
             font-weight: 800;
+            word-break: break-word;
         }
 
         .primary-role {
@@ -208,6 +215,8 @@
             justify-content: center;
             gap: 10px;
             font-weight: 600;
+            width: 100%;
+            word-break: break-all;
         }
 
         .contact-links a:hover {
@@ -269,6 +278,8 @@
             display: flex;
             flex-direction: column;
             gap: 24px;
+            width: 100%;
+            min-width: 0;
         }
 
         .section-header {
@@ -277,6 +288,7 @@
             align-items: center;
             padding-bottom: 12px;
             border-bottom: 1px solid var(--border);
+            width: 100%;
         }
 
         .section-header h2 {
@@ -293,6 +305,7 @@
             display: flex;
             flex-direction: column;
             gap: 22px;
+            width: 100%;
         }
 
         .project-card {
@@ -306,6 +319,7 @@
             grid-template-columns: 240px 1fr;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03);
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
         }
 
         .project-card:hover {
@@ -340,6 +354,7 @@
             flex-direction: column;
             justify-content: space-between;
             gap: 16px;
+            min-width: 0;
         }
 
         .card-meta {
@@ -359,12 +374,14 @@
         .card-title {
             font-size: 1.3rem;
             font-weight: 800;
+            word-break: break-word;
         }
 
         .card-desc {
             font-size: 0.9rem;
             color: var(--text-muted);
             line-height: 1.6;
+            word-break: break-word;
         }
 
         .card-action {
@@ -387,71 +404,84 @@
             transform: translateX(4px);
         }
 
-        /* --- ChatGPT Style Futuristic Bot Widget --- */
+        /* --- Animated Floating AI Assistant Widget --- */
         .ai-assistant-widget {
             position: fixed;
             bottom: 24px;
-            right: 24px;
-            z-index: 999;
+            right: 20px;
+            z-index: 2147483647;
         }
 
         .ai-toggle-btn {
             background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
-            border: 2px solid rgba(59, 130, 246, 0.6);
-            width: 64px;
-            height: 64px;
+            border: 2px solid rgba(59, 130, 246, 0.8);
+            width: 58px;
+            height: 58px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 0 25px rgba(59, 130, 246, 0.4), inset 0 0 12px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
             position: relative;
-            animation: floatBot 3s ease-in-out infinite, pulseFuturistic 2.5s infinite;
+            animation: pulseWidget 3s infinite ease-in-out, floatWidget 4s infinite ease-in-out;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes pulseWidget {
+            0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5); }
+            70% { box-shadow: 0 0 0 14px rgba(59, 130, 246, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+        }
+
+        @keyframes floatWidget {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .ai-toggle-btn:hover {
+            transform: scale(1.1) rotate(5deg);
         }
 
         .ai-toggle-btn svg {
-            width: 32px;
-            height: 32px;
+            width: 26px;
+            height: 26px;
             fill: url(#futuristicGrad);
-            filter: drop-shadow(0 0 6px rgba(96, 165, 250, 0.8));
-            animation: corePulse 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.9));
         }
 
-        @keyframes floatBot {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-
-        @keyframes pulseFuturistic {
-            0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.6), inset 0 0 12px rgba(59, 130, 246, 0.3); }
-            70% { box-shadow: 0 0 0 18px rgba(59, 130, 246, 0), inset 0 0 20px rgba(59, 130, 246, 0.6); }
-            100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0), inset 0 0 12px rgba(59, 130, 246, 0.3); }
-        }
-
-        @keyframes corePulse {
-            0%, 100% { transform: scale(1); opacity: 0.9; }
-            50% { transform: scale(1.1); opacity: 1; filter: drop-shadow(0 0 12px rgba(139, 92, 246, 1)); }
-        }
-
+        /* --- Animated Chat Window Open/Close Transitions --- */
         .ai-chat-window {
-            position: absolute;
-            bottom: 84px;
-            right: 0;
-            width: 390px;
-            height: 560px;
+            position: fixed;
+            bottom: 96px;
+            right: 20px;
+            left: 20px;
+            width: auto;
+            max-width: 380px;
+            margin-left: auto;
+            height: 480px;
+            max-height: calc(100vh - 120px);
             background: var(--chat-bg);
             border: 1px solid var(--border);
-            border-radius: 20px;
-            box-shadow: 0 24px 60px rgba(0,0,0,0.35);
-            display: none;
+            border-radius: 24px;
+            box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+            display: flex;
             flex-direction: column;
             overflow: hidden;
             backdrop-filter: blur(20px);
+            
+            /* Animation States */
+            transform-origin: bottom right;
+            transform: scale(0) translateY(30px);
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.3s ease;
         }
 
         .ai-chat-window.active {
-            display: flex;
+            transform: scale(1) translateY(0);
+            opacity: 1;
+            pointer-events: auto;
         }
 
         .ai-chat-header {
@@ -470,8 +500,8 @@
         }
 
         .ai-mini-avatar {
-            width: 28px;
-            height: 28px;
+            width: 30px;
+            height: 30px;
             background: var(--gradient-accent);
             border-radius: 50%;
             display: flex;
@@ -479,10 +509,11 @@
             justify-content: center;
             color: white;
             font-size: 0.75rem;
+            animation: gradientShift 5s ease infinite;
         }
 
         .ai-chat-header h4 {
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             font-weight: 700;
             letter-spacing: -0.2px;
         }
@@ -494,26 +525,40 @@
             cursor: pointer;
             font-size: 1.1rem;
             padding: 4px;
+            border-radius: 50%;
+            transition: background 0.2s, color 0.2s;
         }
 
         .ai-close-btn:hover {
             color: var(--text-main);
+            background: var(--surface-card);
         }
 
         .ai-chat-body {
             flex: 1;
-            padding: 20px;
+            padding: 16px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 14px;
             font-size: 0.88rem;
         }
 
+        /* Message Bubble Slide & Fade Animations */
         .ai-message-row {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             width: 100%;
+            animation: messagePopIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            opacity: 0;
+            transform: translateY(12px);
+        }
+
+        @keyframes messagePopIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .ai-message-row.user {
@@ -521,14 +566,14 @@
         }
 
         .msg-avatar {
-            width: 28px;
-            height: 28px;
+            width: 26px;
+            height: 26px;
             border-radius: 50%;
             flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 700;
         }
 
@@ -543,10 +588,10 @@
         }
 
         .msg-bubble {
-            padding: 12px 16px;
+            padding: 10px 14px;
             border-radius: 14px;
-            max-width: 78%;
-            line-height: 1.6;
+            max-width: 80%;
+            line-height: 1.5;
             word-break: break-word;
         }
 
@@ -563,13 +608,37 @@
             border-bottom-left-radius: 4px;
         }
 
+        /* Typing Indicator Animation */
+        .typing-dots {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 6px;
+        }
+
+        .typing-dots span {
+            width: 6px;
+            height: 6px;
+            background-color: var(--text-muted);
+            border-radius: 50%;
+            animation: typingBounce 1.4s infinite ease-in-out both;
+        }
+
+        .typing-dots span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes typingBounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1.0); }
+        }
+
         .ai-chat-footer {
-            padding: 14px 16px;
+            padding: 12px 14px;
             border-top: 1px solid var(--border);
             background: var(--surface);
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 6px;
         }
 
         .chat-input-wrapper {
@@ -579,13 +648,13 @@
             border-radius: 14px;
             display: flex;
             align-items: flex-end;
-            padding: 10px 12px;
+            padding: 8px 10px;
             gap: 8px;
         }
 
         .chat-input-wrapper:focus-within {
             border-color: var(--accent);
-            box-shadow: 0 0 0 2px var(--accent-glow);
+            box-shadow: 0 0 0 3px var(--accent-glow);
         }
 
         .chat-input-wrapper textarea {
@@ -594,9 +663,9 @@
             border: none;
             color: var(--text-main);
             font-family: inherit;
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             resize: none;
-            max-height: 100px;
+            max-height: 90px;
             outline: none;
             line-height: 1.4;
         }
@@ -607,17 +676,17 @@
             border: none;
             width: 32px;
             height: 32px;
-            border-radius: 8px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: transform 0.2s ease, background 0.2s ease;
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.2s ease;
             flex-shrink: 0;
         }
 
         .chat-send-btn:hover {
-            transform: scale(1.05);
+            transform: scale(1.12);
         }
 
         .chat-send-btn svg {
@@ -627,7 +696,7 @@
         }
 
         .chat-disclaimer {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: var(--text-muted);
             text-align: center;
         }
@@ -688,26 +757,35 @@
             fill: currentColor;
         }
 
-        /* --- Enhanced Mobile View Optimizations --- */
         @media (max-width: 900px) {
             body {
-                padding: 20px 14px;
+                padding: 16px 12px 100px 12px;
             }
             .layout-wrapper {
                 grid-template-columns: 1fr;
-                gap: 24px;
+                gap: 20px;
+                width: 100%;
+                margin: 0;
             }
             .sidebar {
                 position: static;
-                padding: 24px 20px;
-                border-radius: 20px;
+                padding: 28px 16px;
+                border-radius: 24px;
+                width: 100%;
+            }
+            .main-content {
+                width: 100%;
+            }
+            .projects-stack {
+                width: 100%;
             }
             .project-card {
                 grid-template-columns: 1fr;
+                width: 100%;
             }
             .card-image-wrapper {
-                height: 180px;
-                min-height: 180px;
+                height: 160px;
+                min-height: 160px;
                 border-right: none;
                 border-bottom: 1px solid var(--border);
             }
@@ -719,22 +797,19 @@
                 gap: 18px;
                 text-align: center;
             }
-            .ai-assistant-widget {
-                bottom: 16px;
-                right: 16px;
-            }
             .ai-chat-window {
-                width: calc(100vw - 28px);
-                right: -8px;
-                bottom: 76px;
-                height: 480px;
+                right: 12px;
+                left: 12px;
+                width: auto;
+                bottom: 88px;
+                height: 440px;
             }
         }
     </style>
 </head>
 <body>
 
-    <svg width="0" height="0">
+    <svg width="0" height="0" style="position:absolute;">
         <defs>
             <linearGradient id="futuristicGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stop-color="#60a5fa" />
@@ -821,7 +896,7 @@
                     </div>
                 </a>
 
-                <a href="https://fahadali513.github.io/fa-travels/" target="_blank" class="project-card">
+                <a href="https://fahadali513.github.io/Travel-agency/" target="_blank" class="project-card">
                     <div class="card-image-wrapper">
                         <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=600&auto=format&fit=crop" alt="Travel Agency" class="card-image">
                     </div>
@@ -841,7 +916,7 @@
         </main>
     </div>
 
-    <!-- AI Chatbot Widget -->
+    <!-- Animated AI Chatbot Widget -->
     <div class="ai-assistant-widget">
         <button class="ai-toggle-btn" onclick="toggleAIChat()" title="Open AI Assistant">
             <svg viewBox="0 0 24 24">
@@ -862,18 +937,18 @@
             <div class="ai-chat-body" id="aiChatBody">
                 <div class="ai-message-row bot">
                     <div class="msg-avatar">FA</div>
-                    <div class="msg-bubble">Hello! I am FA Tech Studio's AI assistant. Ask me anything about Fahad Ali, his background, his projects (Portfolio Archive, Clothing Store, and Travel Agency), or how to contact him!</div>
+                    <div class="msg-bubble">Hello! I am FA Tech Studio's AI assistant. Ask me anything about Fahad Ali, his background, his projects, or how to contact him!</div>
                 </div>
             </div>
 
             <div class="ai-chat-footer">
                 <div class="chat-input-wrapper">
-                    <textarea placeholder="Ask a question in any language..." id="aiInput" rows="1" onkeydown="handleAIPress(event)"></textarea>
+                    <textarea placeholder="Ask a question..." id="aiInput" rows="1" onkeydown="handleAIPress(event)"></textarea>
                     <button class="chat-send-btn" onclick="sendAIMessage()" title="Send message">
                         <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
                     </button>
                 </div>
-                <div class="chat-disclaimer">FA Tech Studio Assistant • Powered by Advanced Multilingual AI</div>
+                <div class="chat-disclaimer">FA Tech Studio Assistant • Multilingual AI</div>
             </div>
         </div>
     </div>
@@ -959,7 +1034,13 @@
             loadingRow.id = 'loadingRow';
             loadingRow.innerHTML = `
                 <div class="msg-avatar">FA</div>
-                <div class="msg-bubble" style="color: var(--text-muted);">Thinking...</div>
+                <div class="msg-bubble">
+                    <div class="typing-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
             `;
             body.appendChild(loadingRow);
             body.scrollTop = body.scrollHeight;
