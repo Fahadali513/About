@@ -404,24 +404,70 @@
             transform: translateX(4px);
         }
 
-        /* Coming Soon Badge Animation */
-        .coming-soon-badge {
-            display: inline-block;
-            background: var(--gradient-accent);
-            color: #ffffff;
-            font-size: 0.7rem;
+        /* --- Highly Animated & Futuristic Status / Coming Soon Badges --- */
+        .coming-soon-badge, .developing-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.72rem;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 4px 10px;
-            border-radius: 6px;
-            animation: pulseComingSoon 2s infinite ease-in-out;
-            margin-bottom: 4px;
+            letter-spacing: 1.5px;
+            padding: 6px 14px;
+            border-radius: 8px;
+            margin-bottom: 6px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(4px);
         }
 
-        @keyframes pulseComingSoon {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.05); opacity: 0.85; box-shadow: 0 0 12px var(--accent-glow); }
+        /* Coming Soon Neon Cyberpunk Variant */
+        .coming-soon-badge {
+            background: linear-gradient(270deg, #3b82f6, #8b5cf6, #06b6d4, #3b82f6);
+            background-size: 400% 400%;
+            color: #ffffff;
+            animation: futuristicGlowPulse 3s ease infinite, futuristicGradientMove 6s ease infinite;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.4);
+        }
+
+        /* Still Developing Holographic Amber/Cyan Variant */
+        .developing-badge {
+            background: linear-gradient(270deg, #f59e0b, #ef4444, #3b82f6, #f59e0b);
+            background-size: 400% 400%;
+            color: #ffffff;
+            animation: futuristicGlowPulse 2.5s ease infinite, futuristicGradientMove 5s ease infinite;
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.4);
+        }
+
+        /* Pulsing Hologram Core Dot */
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #ffffff, 0 0 12px #3b82f6;
+            animation: coreBlink 1.2s ease-in-out infinite alternate;
+        }
+
+        @keyframes coreBlink {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 12px #fff, 0 0 20px #8b5cf6; }
+        }
+
+        @keyframes futuristicGradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes futuristicGlowPulse {
+            0%, 100% { 
+                transform: scale(1); 
+            }
+            50% { 
+                transform: scale(1.04); 
+            }
         }
 
         /* --- Animated Floating AI Assistant Widget --- */
@@ -922,12 +968,17 @@
                     </div>
                     <div class="card-body">
                         <div class="card-meta">
+                            <div>
+                                <span class="developing-badge">
+                                    <span class="badge-dot"></span> Still Developing
+                                </span>
+                            </div>
                             <span class="card-tag">Tourism Platform</span>
                             <h3 class="card-title">Travel Agency</h3>
                             <p class="card-desc">An immersive booking and destination discovery portal designed for modern travelers seeking seamless adventures. It includes a comprehensive admin panel enabling complete management and control of the entire website.</p>
                         </div>
                         <div class="card-action">
-                            <span>View Live Demo</span>
+                            <span>Explore Live Preview</span>
                             <span class="action-arrow">Explore &rarr;</span>
                         </div>
                     </div>
@@ -939,10 +990,36 @@
                     </div>
                     <div class="card-body">
                         <div class="card-meta">
-                            <div><span class="coming-soon-badge">Coming Soon</span></div>
+                            <div>
+                                <span class="coming-soon-badge">
+                                    <span class="badge-dot"></span> Coming Soon
+                                </span>
+                            </div>
                             <span class="card-tag">Healthcare Platform</span>
                             <h3 class="card-title">Medical Clinic</h3>
                             <p class="card-desc">A next-generation healthcare platform featuring an advanced appointment system in it, designed to seamlessly manage patient bookings, practitioner schedules, and clinical workflows.</p>
+                        </div>
+                        <div class="card-action">
+                            <span style="color: var(--text-muted);">In Development</span>
+                            <span style="color: var(--accent); font-size: 0.8rem;">Stay Tuned</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" style="cursor: default;">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=600&auto=format&fit=crop" alt="Learning Management System" class="card-image">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <div>
+                                <span class="coming-soon-badge">
+                                    <span class="badge-dot"></span> Coming Soon
+                                </span>
+                            </div>
+                            <span class="card-tag">EdTech Platform</span>
+                            <h3 class="card-title">Learning Management System (LMS)</h3>
+                            <p class="card-desc">A futuristic e-learning platform built to host courses, track student progress, conduct quizzes, and manage virtual classrooms with a high-performance administration dashboard.</p>
                         </div>
                         <div class="card-action">
                             <span style="color: var(--text-muted);">In Development</span>
@@ -975,13 +1052,13 @@
             <div class="ai-chat-body" id="aiChatBody">
                 <div class="ai-message-row bot">
                     <div class="msg-avatar">FA</div>
-                    <div class="msg-bubble">Hello! I am FA Tech Studio's AI assistant. I have full details about Fahad Ali and his projects. Ask me anything!</div>
+                    <div class="msg-bubble">Hello! I am FA Tech Studio's intelligent assistant. I have full knowledge about Fahad Ali, our website, and all our projects. Ask me anything!</div>
                 </div>
             </div>
 
             <div class="ai-chat-footer">
                 <div class="chat-input-wrapper">
-                    <textarea placeholder="Ask a question about Fahad or his projects..." id="aiInput" rows="1" onkeydown="handleAIPress(event)"></textarea>
+                    <textarea placeholder="Ask about Fahad, our website, or projects..." id="aiInput" rows="1" onkeydown="handleAIPress(event)"></textarea>
                     <button class="chat-send-btn" onclick="sendAIMessage()" title="Send message">
                         <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
                     </button>
@@ -1043,7 +1120,7 @@
         let chatHistory = [
             { 
                 role: "system", 
-                content: "You are a professional and multilingual AI assistant for FA Tech Studio, owned by Fahad Ali. You have full detailed knowledge about Fahad Ali, his Full-Stack & UI/UX engineering background, and all his projects including Portfolio Archive, Clothing Store (with an admin panel for full website control), Travel Agency (with an admin panel for full website control), and the upcoming Medical Clinic project (featuring an advanced appointment system)." 
+                content: "You are a professional and multilingual AI assistant for FA Tech Studio, owned and operated by Fahad Ali. You have complete and comprehensive information about Fahad Ali, our official website (FA Tech Studio), and all our projects: 1) Portfolio Archive, 2) Clothing Store (with an admin panel for full store control), 3) Travel Agency (currently still developing, but fully explorable by clicking), 4) Medical Clinic (coming soon with an advanced appointment system), and 5) Learning Management System or LMS (coming soon, featured at the very end with a futuristic admin workflow and course management). Answer user queries accurately and professionally based on this complete context." 
             }
         ];
 
@@ -1134,26 +1211,28 @@
                     botRow.className = 'ai-message-row bot';
                     
                     const lower = userText.toLowerCase();
-                    let reply = "Thanks for reaching out to FA Tech Studio! Fahad Ali is a Full-Stack & UI/UX Architect who builds custom web apps, e-commerce stores, and high-performance frontends. You can reach him directly via WhatsApp at +923306508733 or email at fahadali66927777@gmail.com.";
+                    let reply = "Welcome to FA Tech Studio! We specialize in modern web solutions, full-stack development, and creative engineering led by Fahad Ali. You can reach out via WhatsApp at +923306508733 or email fahadali66927777@gmail.com.";
                     
                     if (lower.includes('fahad') || lower.includes('kon') || lower.includes('kaun') || lower.includes('who is') || lower.includes('bary ma') || lower.includes('about')) {
-                        reply = "FA Tech Studio is owned and operated by Fahad Ali, a skilled Full-Stack and UI/UX Architect specializing in modern web solutions, frontend performance, and immersive user experiences.";
+                        reply = "FA Tech Studio is owned and engineered by Fahad Ali, a Full-Stack & UI/UX Architect specializing in building clean, responsive, and performance-driven web apps and platforms.";
                     } else if (lower.includes('contact') || lower.includes('whatsapp') || lower.includes('number') || lower.includes('rabta') || lower.includes('email')) {
-                        reply = "You can contact Fahad Ali directly on WhatsApp at +923306508733 or email fahadali66927777@gmail.com.";
+                        reply = "You can contact Fahad Ali directly on WhatsApp at +923306508733 or via email at fahadali66927777@gmail.com.";
                     } else if (lower.includes('price') || lower.includes('cost') || lower.includes('charge') || lower.includes('rate') || lower.includes('kitna')) {
-                        reply = "Project pricing varies based on custom requirements and scope. Please message Fahad directly on WhatsApp (+923306508733) to get an exact quote for your custom website or app!";
+                        reply = "Project pricing depends on your specific requirements and scope. Feel free to message Fahad directly on WhatsApp (+923306508733) to discuss your custom project!";
+                    } else if (lower.includes('lms') || lower.includes('learning') || lower.includes('course') || lower.includes('study')) {
+                        reply = "The Learning Management System (LMS) is our new upcoming project featured at the end of the list. It is coming soon with a futuristic interface designed for online courses, student progress tracking, and virtual classrooms!";
                     } else if (lower.includes('medical') || lower.includes('clinic') || lower.includes('appointment') || lower.includes('doctor')) {
-                        reply = "Fahad is currently developing a new 'Medical Clinic' project which is coming soon! It features an advanced appointment system designed to smoothly handle patient bookings and schedules.";
+                        reply = "Our Medical Clinic project is coming soon and will feature an advanced appointment management system to handle practitioner schedules and patient bookings seamlessly.";
                     } else if (lower.includes('travel') || lower.includes('agency') || lower.includes('tour') || lower.includes('trip')) {
-                        reply = "Fahad developed a magnificent Travel Agency project! It is an immersive booking and destination discovery portal that includes an admin panel allowing the entire website to be controlled directly from it.";
+                        reply = "The Travel Agency project is currently still developing, but visitors can still freely explore and test the live preview by clicking on it!";
                     } else if (lower.includes('fashion') || lower.includes('clothing') || lower.includes('store') || lower.includes('shop')) {
-                        reply = "Fahad built the Clothing Store project, a modern minimalist apparel storefront that includes a powerful admin panel enabling full control over the entire website.";
+                        reply = "The Clothing Store is a fully functional e-commerce storefront built by Fahad, complete with a powerful admin panel enabling full control over the website operations.";
                     } else if (lower.includes('archive') || lower.includes('portfolio') || lower.includes('showcase')) {
-                        reply = "The Portfolio Archive project is an extensive aesthetic collection detailing professional web development projects and engineering standards built by Fahad.";
-                    } else if (lower.includes('project') || lower.includes('work') || lower.includes('kaam')) {
-                        reply = "Fahad has developed multiple stellar projects: 1) Portfolio Archive, 2) Clothing Store (with an admin panel), 3) Travel Agency (with an admin panel), and 4) Medical Clinic (Coming Soon, with an appointment system)!";
+                        reply = "The Portfolio Archive showcases a comprehensive collection of professional web development projects and engineering standards.";
+                    } else if (lower.includes('project') || lower.includes('work') || lower.includes('kaam') || lower.includes('website')) {
+                        reply = "FA Tech Studio features several projects: 1) Portfolio Archive, 2) Clothing Store (with an admin panel), 3) Travel Agency (still developing, fully explorable), 4) Medical Clinic (Coming Soon), and 5) Learning Management System / LMS (Coming Soon at the end)!";
                     } else if (lower.includes('hello') || lower.includes('hi') || lower.includes('salam') || lower.includes('hey')) {
-                        reply = "Hello! How can I assist you with Fahad Ali's web development services and projects today? (وعلیکم السلام! آپ کیسے ہیں؟ میں آپ کی کیا مدد کر سکتا ہوں؟)";
+                        reply = "Hello! How can I assist you with FA Tech Studio's website, Fahad Ali's background, or our projects today? (وعلیکم السلام! آپ کیسے ہیں؟ میں آپ کی کیا مدد کر سکتا ہوں؟)";
                     }
 
                     botRow.innerHTML = `
@@ -1182,3 +1261,4 @@
     </script>
 </body>
 </html>
+```[cite: 1]
