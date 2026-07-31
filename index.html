@@ -968,11 +968,6 @@
                     </div>
                     <div class="card-body">
                         <div class="card-meta">
-                            <div>
-                                <span class="developing-badge">
-                                    <span class="badge-dot"></span> Still Developing
-                                </span>
-                            </div>
                             <span class="card-tag">Tourism Platform</span>
                             <h3 class="card-title">Travel Agency</h3>
                             <p class="card-desc">An immersive booking and destination discovery portal designed for modern travelers seeking seamless adventures. It includes a comprehensive admin panel enabling complete management and control of the entire website.</p>
@@ -1120,7 +1115,7 @@
         let chatHistory = [
             { 
                 role: "system", 
-                content: "You are a professional and multilingual AI assistant for FA Tech Studio, owned and operated by Fahad Ali. You have complete and comprehensive information about Fahad Ali, our official website (FA Tech Studio), and all our projects: 1) Portfolio Archive, 2) Clothing Store (with an admin panel for full store control), 3) Travel Agency (currently still developing, but fully explorable by clicking), 4) Medical Clinic (coming soon with an advanced appointment system), and 5) Learning Management System or LMS (coming soon, featured at the very end with a futuristic admin workflow and course management). Answer user queries accurately and professionally based on this complete context." 
+                content: "You are a professional and multilingual AI assistant for FA Tech Studio, owned and operated by Fahad Ali. You have complete and comprehensive information about Fahad Ali, our official website (FA Tech Studio), and all our projects: 1) Portfolio Archive, 2) Clothing Store (with an admin panel for full store control), 3) Travel Agency (fully operational tourism platform with an admin panel), 4) Medical Clinic (coming soon with an advanced appointment system), and 5) Learning Management System or LMS (coming soon, featured at the very end with a futuristic admin workflow and course management). Answer user queries accurately and professionally based on this complete context." 
             }
         ];
 
@@ -1224,13 +1219,13 @@
                     } else if (lower.includes('medical') || lower.includes('clinic') || lower.includes('appointment') || lower.includes('doctor')) {
                         reply = "Our Medical Clinic project is coming soon and will feature an advanced appointment management system to handle practitioner schedules and patient bookings seamlessly.";
                     } else if (lower.includes('travel') || lower.includes('agency') || lower.includes('tour') || lower.includes('trip')) {
-                        reply = "The Travel Agency project is currently still developing, but visitors can still freely explore and test the live preview by clicking on it!";
+                        reply = "The Travel Agency project is an immersive booking and destination discovery portal designed for modern travelers, complete with a comprehensive admin panel enabling complete management and control of the entire website.";
                     } else if (lower.includes('fashion') || lower.includes('clothing') || lower.includes('store') || lower.includes('shop')) {
                         reply = "The Clothing Store is a fully functional e-commerce storefront built by Fahad, complete with a powerful admin panel enabling full control over the website operations.";
                     } else if (lower.includes('archive') || lower.includes('portfolio') || lower.includes('showcase')) {
                         reply = "The Portfolio Archive showcases a comprehensive collection of professional web development projects and engineering standards.";
                     } else if (lower.includes('project') || lower.includes('work') || lower.includes('kaam') || lower.includes('website')) {
-                        reply = "FA Tech Studio features several projects: 1) Portfolio Archive, 2) Clothing Store (with an admin panel), 3) Travel Agency (still developing, fully explorable), 4) Medical Clinic (Coming Soon), and 5) Learning Management System / LMS (Coming Soon at the end)!";
+                        reply = "FA Tech Studio features several projects: 1) Portfolio Archive, 2) Clothing Store (with an admin panel), 3) Travel Agency (with an admin panel), 4) Medical Clinic (Coming Soon), and 5) Learning Management System / LMS (Coming Soon at the end)!";
                     } else if (lower.includes('hello') || lower.includes('hi') || lower.includes('salam') || lower.includes('hey')) {
                         reply = "Hello! How can I assist you with FA Tech Studio's website, Fahad Ali's background, or our projects today? (وعلیکم السلام! آپ کیسے ہیں؟ میں آپ کی کیا مدد کر سکتا ہوں؟)";
                     }
